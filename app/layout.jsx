@@ -24,9 +24,13 @@ export default async function RootLayout({ children }) {
       <body className={inter.className}>
 
         <SessionProvider session={session}>
-          <div className="flex flex-1">
-            <Sidebar />
-            {children}
+          <div className="flex">
+            <div>
+              <Sidebar />
+            </div>
+            <div className='flex-grow'>
+              {children}
+            </div>
           </div>
           <ReactToast />
         </SessionProvider>
