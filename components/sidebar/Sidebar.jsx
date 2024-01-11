@@ -32,7 +32,7 @@ const Sidebar = () => {
 
     const Menus = [
         { title: "Dashboard", path: "/dashboard", icon: <RiDashboardFill /> },
-        { title: "Pages", path: "/pages", icon: <AiOutlineFileText /> },
+        { title: "Pages", path: "/docs", icon: <AiOutlineFileText /> },
         { title: "Media", path: "/media", spacing: true, icon: <BsFillImageFill /> },
         {
             title: "Projects",
@@ -59,22 +59,11 @@ const Sidebar = () => {
 
 
 
-    {/* <li className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md  mt-2`}>
-
-                        <span className={`text-2xl block  float-left`} onMouseEnter={handleMouseEnter} >
-                            <AiOutlineLogout />
-                        </span>
-                        <span className={`text-base font-medium flex-1 duration-200 ${!open && "hidden"}`}>
-                            <button onClick={() => { signOut(); }}>
-                                Logout
-                            </button>
-                        </span>
-                    </li > */}
 
     return (
 
         <>
-            <div className={`bg-dark-blue h-screen md:h-screen p-5 pt-8   ${open ? "w-[250px]" : "w-20"} relative  duration-300`}>
+            <div className={` bg-dark-blue h-screen md:h-screen p-5 pt-8   ${open ? "w-[250px]" : "w-20"} relative  duration-300`}>
 
                 <BsArrowLeftShort className={`bg-white text-dark-blue text-3xl rounded-full absolute -right-3 top-9 border border-dark-blue cursor-pointer ${!open && "rotate-180"}`} onClick={() => setOpen(
                     !open
@@ -84,7 +73,7 @@ const Sidebar = () => {
                     <AiFillEnvironment className={`bg-amber-200 text-4xl rounded cursor-pointer block float-left mr-4 duration-300 ${!open && "rotate-[360deg]"}`} />
                     <h1 className={`text-white origin-left font-medium text-2xl duration-300 ${!open && "scale-0"}`}> Medicon </h1>
                 </div>
-                <hr className="mt-2 w-full" />
+                <hr className="mt-2 w-full border-t  border-gray-300 opacity-50 my-2 " />
 
                 <div className={`flex items-center rounded-md bg-light-white mt-6 px-4 py-2  ${!open ? "px-2.5" : "px-4"}`}>
                     <BsSearch className={`text-white text-lg block float-left cursor-pointer duration-300  ${!open ? "mr-1" : "mr-4"}`} />
@@ -173,21 +162,26 @@ const Sidebar = () => {
                                         </Link>
                                     </button>
                                 </li >
-
-
-
                             </>
 
                         )
 
                         )}
-
-
                     </ul>
                 ) : (
                     <ul>
-                        <li className={` text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md  mt-9`}>
 
+                        <li className={` truncate line-clamp-2 text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md  mt-9`}>
+                            <span className={`text-2xl block  float-left`} onMouseEnter={handleMouseEnter} >
+                                <BsPerson />
+                            </span>
+                            <span className={`text-base font-medium flex-1 duration-200 ${!open && "hidden"}`}>
+                                <p className="">{session.user?.email}</p>
+                            </span>
+                        </li >
+
+
+                        <li className={` text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md`}>
                             <span className={`text-2xl block  float-left`} onMouseEnter={handleMouseEnter} >
                                 <AiOutlineLogout />
                             </span>
