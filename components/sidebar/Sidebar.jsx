@@ -31,7 +31,7 @@ const Sidebar = () => {
     const [submenuOpen, setsubmenuOpen] = useState(false)
 
     const Menus = [
-        { title: "Dashboard", path: "/dashboad", icon: <RiDashboardFill /> },
+        { title: "Dashboard", path: "/dashboard", icon: <RiDashboardFill /> },
         { title: "Pages", path: "/pages", icon: <AiOutlineFileText /> },
         { title: "Media", path: "/media", spacing: true, icon: <BsFillImageFill /> },
         {
@@ -107,9 +107,26 @@ const Sidebar = () => {
                                     ))}
                                 </ul>
                             )}
+
+
+
                         </>
 
-                    ))}
+                    )
+
+                    )}
+
+                    <li className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md  mt-2`}>
+
+                        <span className={`text-2xl block  float-left`} onMouseEnter={handleMouseEnter} >
+                            <AiOutlineLogout />
+                        </span>
+                        <span className={`text-base font-medium flex-1 duration-200 ${!open && "hidden"}`}>
+                            <button onClick={() => { signOut(); }}>
+                                Logout
+                            </button>
+                        </span>
+                    </li >
                 </ul>
 
             </div >
