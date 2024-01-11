@@ -47,10 +47,29 @@ const Sidebar = () => {
         },
         { title: "Analytics", path: "/analitics", icon: < AiOutlineBarChart /> },
         { title: "Inbox", path: "/inbox", icon: <AiOutlineMail /> },
-        { title: "Sign Up", path: "/register", spacing: true, icon: <BsPerson /> },
 
-        { title: "Login", path: "/login", icon: <AiOutlineLogout /> },
     ];
+
+
+    const authMenus = [
+        { title: "Sign Up", path: "/register", spacing: true, icon: <BsPerson /> },
+        { title: "Login", path: "/login", icon: <AiOutlineLogout /> },
+
+    ]
+
+
+
+    {/* <li className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md  mt-2`}>
+
+                        <span className={`text-2xl block  float-left`} onMouseEnter={handleMouseEnter} >
+                            <AiOutlineLogout />
+                        </span>
+                        <span className={`text-base font-medium flex-1 duration-200 ${!open && "hidden"}`}>
+                            <button onClick={() => { signOut(); }}>
+                                Logout
+                            </button>
+                        </span>
+                    </li > */}
 
     return (
 
@@ -91,10 +110,13 @@ const Sidebar = () => {
                                             {menu.title}
                                         </button>
                                     ) : (
+
                                         <Link href={menu.path}>
                                             {menu.title}
                                         </Link>
                                     )}
+
+
                                 </span>
                                 {
                                     menu.submenu && open && (
@@ -125,19 +147,58 @@ const Sidebar = () => {
 
                     )}
 
-                    <li className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md  mt-2`}>
 
-                        <span className={`text-2xl block  float-left`} onMouseEnter={handleMouseEnter} >
-                            <AiOutlineLogout />
-                        </span>
-                        <span className={`text-base font-medium flex-1 duration-200 ${!open && "hidden"}`}>
-                            <button onClick={() => { signOut(); }}>
-                                Logout
-                            </button>
-                        </span>
-                    </li >
+
                 </ul>
 
+
+                {/* auth menus  */}
+
+
+
+
+
+                {!session ? (
+                    <ul className="pt-2">
+                        {authMenus.map((menu, index) => (
+                            <>
+                                <li key={menu} className={`text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md   ${menu.spacing ? "mt-9" : "mt-2"} mt-2`}>
+
+                                    <span className={`text-2xl block  float-left`} onMouseEnter={handleMouseEnter} >
+                                        {menu.icon ? menu.icon : <RiDashboardFill />}
+                                    </span>
+                                    <button className={`text-base font-medium  duration-200 ${!open && "hidden"}`}>
+                                        <Link href={menu.path}>
+                                            {menu.title}
+                                        </Link>
+                                    </button>
+                                </li >
+
+
+
+                            </>
+
+                        )
+
+                        )}
+
+
+                    </ul>
+                ) : (
+                    <ul>
+                        <li className={` text-gray-300 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md  mt-9`}>
+
+                            <span className={`text-2xl block  float-left`} onMouseEnter={handleMouseEnter} >
+                                <AiOutlineLogout />
+                            </span>
+                            <span className={`text-base font-medium flex-1 duration-200 ${!open && "hidden"}`}>
+                                <button onClick={() => { signOut(); }}>
+                                    Logout
+                                </button>
+                            </span>
+                        </li >
+                    </ul>
+                )}
             </div >
 
         </>
